@@ -830,9 +830,11 @@ void CDisZ80::AnalyseCodeChunk( CLabel* label )
                     l2->m_data[0].dataperline = l->m_data[1].dataperline ;
                 }
                 while ( getByte(address) != l->m_terminator) {
-                    doc->SetMemFlags(address++,doc->GetMemFlags(address)&~(MEMF_CODE|MEMF_START)) ;
+                    doc->SetMemFlags(address,doc->GetMemFlags(address)&~(MEMF_CODE|MEMF_START)) ;
+                    address++;
                 }
-                doc->SetMemFlags(address++,doc->GetMemFlags(address)&~(MEMF_CODE|MEMF_START)) ;
+                doc->SetMemFlags(address,doc->GetMemFlags(address)&~(MEMF_CODE|MEMF_START)) ;
+                address++;
                 
                 if (!labels->HasLabel(address) )
                     labels->add(address,NULL,LABEL_CODE, LF_ANALYSED|LF_NOLABEL);

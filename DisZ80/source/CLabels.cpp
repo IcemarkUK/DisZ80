@@ -532,8 +532,13 @@ void CLabels::sort ( void )
     qsort( labels, 1, unsortedLabels-1 );
     sortedLabels=unsortedLabels;
     
-    for ( int ii=1; ii<sortedLabels-1; ii++ )
-        labels[ii]->m_size = labels[ii+1]->m_address - labels[ii]->m_address;
+    for ( int ii=1; ii<sortedLabels-1; ii++ ) {
+        if ( labels[ii]->m_endaddress == 0 ) {
+            labels[ii]->m_size = labels[ii+1]->m_address - labels[ii]->m_address;
+        }else{
+            labels[ii]->m_size = labels[ii]->m_endaddress - labels[ii]->m_address;
+        }
+    }
     
 }
 
