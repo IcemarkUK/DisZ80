@@ -214,13 +214,13 @@ token_t tokens_type[] = {
 
 token_t tokens_format[] = {
     { "hex",			16 },
-    { "h",			16 },
+    { "h",			    16 },
     { "binary",			1 },
     { "bin",			1 },
-    { "b",			1 },
-    { "decimal",			10 },
+    { "b",			    1 },
+    { "decimal",		10 },
     { "dec",			10 },
-    { "d",			10 },
+    { "d",			    10 },
 } ;
 
 void CLabels::Read ( LPCSTR szFilename )
@@ -401,6 +401,10 @@ void CLabels::ReadLabels ( xml::node* base, CLabel* parent )
                             label->m_data[ii].type = (labeltype_t) r->ReadToken("type", tokens_type, NUMELE(tokens_type), LABEL_IGNORE) ;
                             label->m_data[ii].dataperline = r->ReadInt("dataperline",0);
                             label->m_data[ii].format = r->ReadToken("format", tokens_format, NUMELE(tokens_format), 16);
+                            LPCSTR name = r->ReadStr("name", nullptr);
+                            if ( name != nullptr ) {
+                                label->m_data[ii].name = strdup(name);
+                            }
                             
                         }else{
                             break;

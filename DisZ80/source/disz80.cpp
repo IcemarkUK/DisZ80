@@ -737,7 +737,11 @@ void CDisZ80::AnalyseDataChunk ( CLabel* label, BOOL flag )
                     if ( !labels->HasLabel(refadd) ) {
                         
                         char buffer[128];
-                        sprintf(buffer,"%s_%02x", label->Name(), index );
+                        if ( label->m_data[1].name != nullptr ) {
+                            sprintf(buffer,"%s%02x", label->m_data[1].name, index );
+                        }else{
+                            sprintf(buffer,"%s_%02x", label->Name(), index );
+                        }
                         
                         CLabel* l = labels->add(refadd,buffer,(labeltype_t)label->m_data[1].type, LF_KEEP|LF_ANALYSED );
                         for ( int j=1; j<10; j++ )

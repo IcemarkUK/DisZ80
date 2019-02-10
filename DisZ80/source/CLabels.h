@@ -21,6 +21,7 @@ typedef struct  {
     labeltype_t	type;
     int			dataperline;
     int			format;
+    LPCSTR      name;
 } datatype_t ;
 
 enum LABELFLAGS {
