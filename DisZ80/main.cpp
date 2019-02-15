@@ -73,6 +73,8 @@ void DeInit()
 
 void ReadConfig()
 {
+    disz80->LoadXml( "default.xml" );
+
     disz80->LoadXml( filebase.c_str() );
 }
 
@@ -322,6 +324,9 @@ int DisplayLine ( int address )
     CLabel* label = disz80->labels->nearest(address) ;
     
     DisplayIncludeFile( label, address, 0 );
+    
+    if ( disz80->GetMemFlags(address)&MEMF_CODE && !(disz80->GetMemFlags(address-1)&MEMF_CODE) )
+          newline();
     
     if ( disz80->GetMemFlags(address)&MEMF_LINEBREAK ) {
         if ( disz80->GetMemFlags(address)&MEMF_ONLYBREAK ) {

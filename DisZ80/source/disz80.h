@@ -23,6 +23,8 @@ class CLabels;
 #define MEMF_ONLYLABEL		0x40
 #define MEMF_ONLYBREAK		0x80
 #define MEMF_NOLABEL		0x100
+#define MEMF_NEWLINE        0x200
+
 
 
 typedef u32 mem_t ;

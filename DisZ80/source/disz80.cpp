@@ -747,7 +747,10 @@ void CDisZ80::AnalyseDataChunk ( CLabel* label, BOOL flag )
                         for ( int j=1; j<10; j++ )
                             l->m_data[j-1] = label->m_data[j];
                         
-                        SetMemFlags(refadd,MEMF_LINEBREAK);
+                        SetMemFlags(refadd,MEMF_LINEBREAK|MEMF_NEWLINE);
+                        
+                        if ( type == LABEL_CODE )
+                            SetMemFlags(refadd,MEMF_START|MEMF_CODE);
                         
                         
                         if ( refadd < endaddress ) {

@@ -163,14 +163,14 @@ void CLabels::Read ( void )
     /* the system labels won't be written out */
     defaultflags=0;
     
-    ///* try and read a default system labels file */
-    //if ( szDefLabelFile == NULL )
-    //	SAFESTRCPY( path_buffer, "default.xml" );
-    //else
-    //	SAFESTRCPY( path_buffer, szDefLabelFile );
-    
-    //ReadFile( path_buffer );
-    
+//    ///* try and read a default system labels file */
+//    if ( szDefLabelFile == NULL )
+//        SAFESTRCPY( path_buffer, "default.xml" );
+//    else
+//        SAFESTRCPY( path_buffer, szDefLabelFile );
+//
+//    Read( path_buffer );
+//
     /* the user labels will be written out */
     defaultflags|=LF_KEEP;
     
